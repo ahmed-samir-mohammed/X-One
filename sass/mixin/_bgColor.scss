@@ -1,0 +1,17 @@
+@use '../base/variable' as var;
+
+@mixin bgColor($color, $opacity: 1, $fontColor: null) {
+    @if $color ==var.$mainColor {
+        background-color: var.$mainColor;
+        color: var.$fontColorWhite;
+    }
+
+    @if ($color ==var.$mainColor) and ($opacity < 1) {
+        background-color: rgba($color: var.$mainColor, $alpha: $opacity);
+        color: $fontColor;
+    }
+
+    & {
+        @content
+    }
+}
